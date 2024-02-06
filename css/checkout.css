@@ -1,0 +1,20 @@
+/* adjust mobile view for checkout page */
+@media screen and (max-width: 600px) {
+  #customer_info > div.woocommerce-billing-fields-custom > div.ast-checkout-form-heading	{
+    /* display:none; */
+    display:flex;
+    flex-direction:column;
+  }
+}
+
+/* Capitalize dropdown options */
+.select2-results__options li {
+  text-transform: uppercase;
+}
+
+#select2-billing_state-container {
+  text-transform: uppercase;
+}
+#select2-shipping_state-container {
+  text-transform: uppercase;
+}
