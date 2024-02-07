@@ -21,44 +21,70 @@ document.addEventListener('DOMContentLoaded', () => {
   const PhoneRootNode = document.getElementById('billing_phone_field');
   const ExtensionRootNode = document.getElementById('billing_phone_extension_field');
   PhoneRootNode.parentNode.insertBefore(ExtensionRootNode, PhoneRootNode.nextSibling);
+  
+  const UppercaseTextEntry = (e) => {
+    e.target.value = e.target.value.toUpperCase();
+  }
 
   const billingFirstName = document.getElementById('billing_first_name');
   billingFirstName.setAttribute('maxlength', '30');
-  billingFirstName.setAttribute('style', 'text-transform: uppercase');
+  billingFirstName.value = billingFirstName.value.toUpperCase();
+  billingFirstName.oninput = UppercaseTextEntry;
+
   const billingLastName = document.getElementById('billing_last_name');
   billingLastName.setAttribute('maxlength', '30');
-  billingLastName.setAttribute('style', 'text-transform: uppercase');
+  billingLastName.value = billingLastName.value.toUpperCase();
+  billingLastName.oninput = UppercaseTextEntry;
+  
   const billingCompany = document.getElementById('billing_company');
   billingCompany.setAttribute('maxlength', '30');
-  billingCompany.setAttribute('style', 'text-transform: uppercase');
+  billingCompany.value = billingCompany.value.toUpperCase();
+  billingCompany.oninput = UppercaseTextEntry;
+
   const billingAddress1 = document.getElementById('billing_address_1');
   billingAddress1.setAttribute('maxlength', '30');
-  billingAddress1.setAttribute('style', 'text-transform: uppercase');
+  billingAddress1.value = billingAddress1.value.toUpperCase();
+  billingAddress1.oninput = UppercaseTextEntry;
+
   const billingCity = document.getElementById('billing_city');
   billingCity.setAttribute('maxlength', '30');
-  billingCity.setAttribute('style', 'text-transform: uppercase');
+  billingCity.value = billingCity.value.toUpperCase();
+  billingCity.oninput = UppercaseTextEntry;
+
   const billingOrderComments = document.getElementById('order_comments');
   billingOrderComments.setAttribute('maxlength', '30');
-  billingOrderComments.setAttribute('style', 'text-transform: uppercase');
+  billingOrderComments.value = billingOrderComments.value.toUpperCase();
+  billingOrderComments.oninput = UppercaseTextEntry;
   
   const shippingFirstName = document.getElementById('shipping_first_name');
   shippingFirstName.setAttribute('maxlength', '30');
-  shippingFirstName.setAttribute('style', 'text-transform: uppercase');
+  shippingFirstName.value = shippingFirstName.value.toUpperCase();
+  shippingFirstName.oninput = UppercaseTextEntry;
+
   const shippingLastName = document.getElementById('shipping_last_name');
   shippingLastName.setAttribute('maxlength', '30');
-  shippingLastName.setAttribute('style', 'text-transform: uppercase');
+  shippingLastName.value = shippingLastName.value.toUpperCase();
+  shippingLastName.oninput = UppercaseTextEntry;
+
   const shippingCompany = document.getElementById('shipping_company');
   shippingCompany.setAttribute('maxlength', '30');
-  shippingCompany.setAttribute('style', 'text-transform: uppercase');
+  shippingCompany.value = shippingCompany.value.toUpperCase();
+  shippingCompany.oninput = UppercaseTextEntry;
+
   const shippingAddress1 = document.getElementById('shipping_address_1');
   shippingAddress1.setAttribute('maxlength', '30');
-  shippingAddress1.setAttribute('style', 'text-transform: uppercase');
+  shippingAddress1.value = shippingAddress1.value.toUpperCase();
+  shippingAddress1.oninput = UppercaseTextEntry;
+
   const shippingCity = document.getElementById('shipping_city');
   shippingCity.setAttribute('maxlength', '30');
-  shippingCity.setAttribute('style', 'text-transform: uppercase');
+  shippingCity.value = shippingCity.value.toUpperCase();
+  shippingCity.oninput = UppercaseTextEntry;
+
   const shippingOrderComments = document.getElementById('order_comments');
   shippingOrderComments.setAttribute('maxlength', '30');
-  shippingOrderComments.setAttribute('style', 'text-transform: uppercase');
+  shippingOrderComments.value = shippingOrderComments.value.toUpperCase();
+  shippingOrderComments.oninput = UppercaseTextEntry;
 
   setTimeout(() => {
     const buzzer = document.getElementById('billing_address_2');
