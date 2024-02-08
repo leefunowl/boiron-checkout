@@ -1,4 +1,5 @@
-document.addEventListener('DOMContentLoaded', () => {  
+document.addEventListener('DOMContentLoaded', () => {
+
   const lang = document.documentElement.lang;
   
   const BillPhone = document.getElementById('billing_phone');
@@ -89,11 +90,15 @@ document.addEventListener('DOMContentLoaded', () => {
   setTimeout(() => {
     const buzzer = document.getElementById('billing_address_2');
     const email = document.getElementById('billing_email');
+    const OrderComment = document.getElementById('order_comments');
+
     if (lang == 'en-US') {
       buzzer.placeholder = "Buzzer (optional)";
+      OrderComment.placeholder = "30 characters maximum";
     } else {
       buzzer.placeholder = "Code d'entrée (facultative)";
       email.placeholder = "Nom d’utilisateur ou adresse courriel *";
+      OrderComment.placeholder = "30 caractères maximum";
     }
   }, 10);
 
