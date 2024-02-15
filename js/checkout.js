@@ -94,11 +94,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (lang == 'en-US') {
       buzzer.placeholder = "Buzzer (optional)";
-      OrderComment.placeholder = "30 characters maximum";
+      OrderComment.placeholder = "Notes about your order (30 characters maximum)";
     } else {
       buzzer.placeholder = "Code d'entrée (facultative)";
       email.placeholder = "Nom d’utilisateur ou adresse courriel *";
-      OrderComment.placeholder = "30 caractères maximum";
+      OrderComment.placeholder = "Notes concernant votre commande (30 caractères maximum)";
     }
   }, 10);
 

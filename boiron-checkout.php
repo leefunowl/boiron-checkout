@@ -7,7 +7,7 @@
  * Author URI:      https://leefun.us/
  * Text Domain:     boiron-checkout
  * Domain Path:     /languages
- * Version:         0.0.2
+ * Version:         0.0.3
  *
  * @package         boiron-checkout
  */
@@ -35,4 +35,54 @@ function leefun_add_phone_extension_field( $fields ) {
 		);
 
 		return $fields;
+}
+
+// Sample request
+add_action('woocommerce_before_order_notes', 'boiron_sample_request_field');
+function boiron_sample_request_field( $checkout ) {
+	if (is_page('checkout')) {
+		$checkout_page_id = get_the_ID();
+		$acf_product_1_name = get_post_meta($checkout_page_id, 'product_1_name');
+		$acf_product_1_sku = get_post_meta($checkout_page_id, 'product_1_sku');
+		$acf_product_2_name = get_post_meta($checkout_page_id, 'product_2_name');
+		$acf_product_2_sku = get_post_meta($checkout_page_id, 'product_2_sku');
+		$acf_product_3_name = get_post_meta($checkout_page_id, 'product_3_name');
+		$acf_product_3_sku = get_post_meta($checkout_page_id, 'product_3_sku');
+		$acf_product_4_name = get_post_meta($checkout_page_id, 'product_4_name');
+		$acf_product_4_sku = get_post_meta($checkout_page_id, 'product_4_sku');
+						
+		echo '<h3>'.__('Request sample').'</h3>';
+		
+		woocommerce_form_field( 'sample_request', array(
+				'type'          => 'select',
+				'label'         => __( '' ),
+				'options'       => array(
+					''		=> __( 'Select a sample product', 'boiron' ),
+					$acf_product_1_sku[0] => __( $acf_product_1_name[0], 'boiron' ),
+					$acf_product_2_sku[0] => __( $acf_product_2_name[0], 'boiron' ),
+					$acf_product_3_sku[0] => __( $acf_product_3_name[0], 'boiron' ),
+					$acf_product_4_sku[0] => __( $acf_product_4_name[0], 'boiron' ),
+				)
+	 	),
+	
+		$checkout->get_value( 'sample_request' ));
+	}
+}
+
+add_action('woocommerce_checkout_update_order_meta', 'boiron_sample_request_field_update_order_meta');
+function boiron_sample_request_field_update_order_meta( $order_id ) {
+	if ($_POST['sample_request']) update_post_meta( $order_id, 'sample_request', esc_attr($_POST['sample_request']));
+}
+
+//* Display field value on the order edition page
+add_action( 'woocommerce_admin_order_data_after_billing_address', 'boiron_sample_request_field_display_admin_order_meta', 10, 1 );
+function boiron_sample_request_field_display_admin_order_meta($order){
+	echo '<p><strong>'.__('Request sample').':</strong> ' . get_post_meta( $order->id, 'sample_request', true ) . '</p>';
+}
+
+//* Add selection field value to emails
+add_filter('woocommerce_email_order_meta_keys', 'boiron_sample_request_order_meta_keys');
+function boiron_sample_request_order_meta_keys( $keys ) {
+	$keys['sample_request'] = 'sample_request';
+	return $keys;
 }
