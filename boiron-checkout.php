@@ -86,3 +86,22 @@ function boiron_sample_request_order_meta_keys( $keys ) {
 	$keys['sample_request'] = 'sample_request';
 	return $keys;
 }
+
+// Inject regular price into order meta for promo products
+function add_order_item_meta($item_id, $values) { 
+  $item_data = $values->get_data();
+
+	if (array_key_exists("product_id", $item_data)) {
+		$product_id = $item_data['product_id']; 
+		$variation_id = $item_data['variation_id']; 
+		$product_id = $variation_id > 0 ? $variation_id : $product_id; 
+		$product = wc_get_product($product_id);
+
+		if ($product->get_sale_price()) {
+			wc_add_order_item_meta( $item_id, "_regular_price", $product->get_regular_price()); 
+		}
+		
+	}
+	
+} 
+add_action('woocommerce_new_order_item', 'add_order_item_meta', 10, 2);
