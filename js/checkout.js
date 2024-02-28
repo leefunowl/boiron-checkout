@@ -95,10 +95,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (lang == 'en-US') {
       buzzer.placeholder = "Buzzer (optional)";
       OrderComment.placeholder = "Notes about your order (30 characters maximum)";
+      billingAddress1.placeholder = "House number & street name (No PO Box)";
     } else {
       buzzer.placeholder = "Code d'entrée (facultative)";
       email.placeholder = "Nom d’utilisateur ou adresse courriel *";
       OrderComment.placeholder = "Notes concernant votre commande (30 caractères maximum)";
+      billingAddress1.placeholder = "Numéro de voie&nom de la rue (No PO Box)";
     }
   }, 10);
 
